@@ -13,14 +13,23 @@ struct URLManager {
     let privateKey = Bundle.main.object(forInfoDictionaryKey: "PRIVATE_KEY") as? String
     let publicKey = Bundle.main.object(forInfoDictionaryKey: "PUBLIC_KEY") as? String
     
-    func getApiPath() -> URL? {
+    func getApiRequest() -> URLRequest? {
         guard let privateKey = privateKey, !privateKey.isEmpty, let publicKey = publicKey, !publicKey.isEmpty else {
             print("Keys not found")
             return nil
         }
-        let timeStamp = getEpochTime()
-        let urlString = String.baseEndPoint + ContentType.characters.rawValue + String.apiKeyStr + publicKey + .hashStr + getMd5(of: timeStamp + privateKey + publicKey)
-        return URL(string: urlString)
+
+        var components = URLComponents(string: String.baseEndPoint + ContentType.comics.rawValue)!
+        let ts = getEpochTime()
+        components.queryItems = [
+            URLQueryItem(name: "apikey", value: publicKey),
+            URLQueryItem(name: "ts", value: ts),
+            URLQueryItem(name: "hash", value: getMd5(of: ts + privateKey + publicKey))
+        ]
+        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+        var request = URLRequest(url: components.url!)
+        request.httpMethod = "GET"
+        return request
     }
     
     func getEpochTime() -> String {

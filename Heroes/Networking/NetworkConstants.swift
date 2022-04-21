@@ -9,8 +9,6 @@ import Foundation
 
 extension String {
     static let baseEndPoint = "https://gateway.marvel.com/v1/public"
-    static let apiKeyStr = "?apikey=38079eb7f009738b6e38c5a530ac7a69"
-    static let hashStr = "&hash="
 }
 
 enum ContentType : String {

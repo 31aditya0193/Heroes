@@ -13,8 +13,9 @@ class HomveVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var urlManager = URLManager()
-        if let urlString = urlManager.getApiPath() {
-            NetworkManager.shared.getApiData(requestUrl: urlString, completionHandler: {
+        if let urlString = urlManager.getApiRequest() {
+            print(urlString)
+            NetworkManager.shared.getApiData(urlRequest: urlString, resultType: Welcome.self, completionHandler: { result in 
                 print("Call Successful")
             })
         }
