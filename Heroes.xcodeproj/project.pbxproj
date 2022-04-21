@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD370FE428111448003FEB37 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD370FE328111448003FEB37 /* Model.swift */; };
 		BD7053AA2801B668008F5944 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7053A92801B668008F5944 /* AppDelegate.swift */; };
 		BD7053AC2801B668008F5944 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7053AB2801B668008F5944 /* SceneDelegate.swift */; };
 		BD7053AE2801B668008F5944 /* HomveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7053AD2801B668008F5944 /* HomveVC.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD370FE328111448003FEB37 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BD7053A62801B668008F5944 /* Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7053A92801B668008F5944 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD7053AB2801B668008F5944 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD370FE12811141F003FEB37 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD7053AD2801B668008F5944 /* HomveVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BD370FE228111431003FEB37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD7053AF2801B668008F5944 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BD370FE52811145C003FEB37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD370FE328111448003FEB37 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BD70539D2801B668008F5944 = {
 			isa = PBXGroup;
 			children = (
@@ -107,8 +133,9 @@
 			isa = PBXGroup;
 			children = (
 				BDD31C1E280C49C400BF82A5 /* App */,
-				BD7053AD2801B668008F5944 /* HomveVC.swift */,
-				BD7053AF2801B668008F5944 /* Main.storyboard */,
+				BD370FE12811141F003FEB37 /* ViewControllers */,
+				BD370FE52811145C003FEB37 /* Model */,
+				BD370FE228111431003FEB37 /* View */,
 				BD7053B22801B669008F5944 /* Assets.xcassets */,
 				BDD31C1A280C441900BF82A5 /* Networking */,
 				BD7053B42801B669008F5944 /* LaunchScreen.storyboard */,
@@ -293,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD370FE428111448003FEB37 /* Model.swift in Sources */,
 				BDD31C23280C635900BF82A5 /* NetworkConstants.swift in Sources */,
 				BDD31C1C280C443600BF82A5 /* NetworkManager.swift in Sources */,
 				BD7053AE2801B668008F5944 /* HomveVC.swift in Sources */,

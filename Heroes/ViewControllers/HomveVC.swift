@@ -8,16 +8,21 @@
 import UIKit
 
 class HomveVC: UIViewController {
+    var vm : ResponseModel? = nil
     @IBOutlet weak var heroesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var urlManager = URLManager()
+        let urlManager = URLManager()
         if let urlString = urlManager.getApiRequest() {
-            print(urlString)
-            NetworkManager.shared.getApiData(urlRequest: urlString, resultType: Welcome.self, completionHandler: { result in 
-                print("Call Successful")
+            NetworkManager.shared.getApiData(urlRequest: urlString, resultType: ResponseModel.self, completionHandler: { result in 
+                self.vm = result
+                DispatchQueue.main.async {
+                    self.heroesTableView.reloadData()
+                }
             })
+        } else {
+            print("API Request Parsing Failure")
         }
         setupTable()
     }
@@ -28,15 +33,15 @@ extension HomveVC: UITableViewDelegate, UITableViewDataSource {
         self.heroesTableView.delegate = self
         self.heroesTableView.dataSource = self
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        vm?.data.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeroCell", for: indexPath)
-        cell.textLabel?.text = "Hello"
+        cell.textLabel?.text = vm?.data.results[indexPath.row].name ?? "No Name"
         return cell
     }
-    
 }
 

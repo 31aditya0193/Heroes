@@ -7,24 +7,25 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    let code: Int
-    let status, copyright, attributionText, attributionHTML: String
+
+struct ResponseModel: Decodable {
+//    let code: Int
+//    let status, copyright, attributionText, attributionHTML: String
     let data: DataClass
-    let etag: String
+//    let etag: String
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
-    let offset, limit, total, count: Int
+struct DataClass: Decodable {
+//    let offset, limit, total, count: Int
     let results: [Result]
 }
 
 // MARK: - Result
-struct Result: Codable {
-    let id: Int
-    let name, resultDescription, modified, resourceURI: String?
+struct Result: Decodable {
+//    let id: Int
+    let name : String?
+//    let resultDescription, modified, resourceURI: String?
 //    let urls: [URLElement]
 //    let thumbnail: Thumbnail
 //    let comics: Comics
@@ -37,7 +38,8 @@ struct Result: Codable {
 //        case modified, resourceURI, urls, thumbnail, comics, stories, events, series
 //    }
 }
-
+/*
+ UnComment when needed
 // MARK: - Comics
 struct Comics: Codable {
     let available, returned: Int
@@ -76,3 +78,4 @@ struct Thumbnail: Codable {
 struct URLElement: Codable {
     let type, url: String
 }
+*/

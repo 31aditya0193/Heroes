@@ -19,7 +19,7 @@ struct URLManager {
             return nil
         }
 
-        var components = URLComponents(string: String.baseEndPoint + ContentType.comics.rawValue)!
+        var components = URLComponents(string: String.baseEndPoint + ContentType.characters.rawValue)!
         let ts = getEpochTime()
         components.queryItems = [
             URLQueryItem(name: "apikey", value: publicKey),
