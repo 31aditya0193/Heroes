@@ -22,7 +22,6 @@ class HeroTableCell: UITableViewCell {
             print("Invalid Image Path")
             return
         }
-        let imageRequest = URLRequest(url: url)
         URLSession.shared.dataTask(with: url, completionHandler: { result,_,_  in
             let image = UIImage(data: result!)
             DispatchQueue.main.async {
