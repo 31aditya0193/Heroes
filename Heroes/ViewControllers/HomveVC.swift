@@ -9,6 +9,7 @@ import UIKit
 
 class HomveVC: UIViewController {
     var vm : ResponseModel? = nil
+    @IBOutlet weak var heroSearchBar: UISearchBar!
     @IBOutlet weak var heroesTableView: UITableView!
     
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ extension HomveVC: UITableViewDelegate, UITableViewDataSource {
     func setupTable() {
         self.heroesTableView.delegate = self
         self.heroesTableView.dataSource = self
+        self.heroesTableView.register(UINib(nibName: "HeroTableCell", bundle: nil), forCellReuseIdentifier: "HeroCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,9 +41,17 @@ extension HomveVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HeroCell", for: indexPath)
-        cell.textLabel?.text = vm?.data.results[indexPath.row].name ?? "No Name"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeroCell", for: indexPath) as! HeroTableCell
+        let name = vm?.data.results[indexPath.row].name ?? "Name Not Received"
+        let thumbNail = vm?.data.results[indexPath.row].thumbnail
+        var thumbNailPath = (thumbNail?.path ?? "") + "." + (thumbNail?.thumbnailExtension ?? "")
+        thumbNailPath = thumbNailPath.replacingOccurrences(of: "http", with: "https")
+        cell.setupCell(name: name, withImage: thumbNailPath)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        40
     }
 }
 

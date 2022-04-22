@@ -16,8 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-wA-Wrl">
+                                <rect key="frame" x="0.0" y="140" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="enH-VD-qJC">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="191" width="414" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeroCell" id="mMF-nh-rMM">
@@ -34,14 +38,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="enH-VD-qJC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TNR-Yh-zj3"/>
+                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="DfX-uv-FEO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="enH-VD-qJC" secondAttribute="bottom" id="M4c-la-wz5"/>
                             <constraint firstItem="enH-VD-qJC" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="XNV-Lf-maw"/>
-                            <constraint firstItem="enH-VD-qJC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kOe-4Q-luo"/>
-                            <constraint firstItem="enH-VD-qJC" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="lcd-Qq-Y2J"/>
+                            <constraint firstItem="enH-VD-qJC" firstAttribute="top" secondItem="QfB-wA-Wrl" secondAttribute="bottom" id="do2-7d-3F4"/>
+                            <constraint firstItem="enH-VD-qJC" firstAttribute="leading" secondItem="QfB-wA-Wrl" secondAttribute="leading" id="og1-VV-6Xm"/>
+                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qkG-CJ-CP3"/>
+                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uRZ-Le-fRK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Heroes" id="CDh-X0-Hx4"/>
                     <connections>
+                        <outlet property="heroSearchBar" destination="QfB-wA-Wrl" id="Z4Z-O4-Lr0"/>
                         <outlet property="heroesTableView" destination="enH-VD-qJC" id="fyB-J8-5z3"/>
                     </connections>
                 </viewController>

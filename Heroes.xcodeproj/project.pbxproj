@@ -17,6 +17,8 @@
 		BD7053C12801B669008F5944 /* HeroesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7053C02801B669008F5944 /* HeroesTests.swift */; };
 		BD7053CB2801B669008F5944 /* HeroesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7053CA2801B669008F5944 /* HeroesUITests.swift */; };
 		BD7053CD2801B669008F5944 /* HeroesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7053CC2801B669008F5944 /* HeroesUITestsLaunchTests.swift */; };
+		BDA8D67C28125E60000098D3 /* HeroTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8D67A28125E60000098D3 /* HeroTableCell.swift */; };
+		BDA8D67D28125E60000098D3 /* HeroTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA8D67B28125E60000098D3 /* HeroTableCell.xib */; };
 		BDD31C1C280C443600BF82A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD31C1B280C443600BF82A5 /* NetworkManager.swift */; };
 		BDD31C21280C534200BF82A5 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD31C20280C534200BF82A5 /* URLManager.swift */; };
 		BDD31C23280C635900BF82A5 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD31C22280C635900BF82A5 /* NetworkConstants.swift */; };
@@ -54,6 +56,8 @@
 		BD7053C62801B669008F5944 /* HeroesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeroesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7053CA2801B669008F5944 /* HeroesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesUITests.swift; sourceTree = "<group>"; };
 		BD7053CC2801B669008F5944 /* HeroesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BDA8D67A28125E60000098D3 /* HeroTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableCell.swift; sourceTree = "<group>"; };
+		BDA8D67B28125E60000098D3 /* HeroTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroTableCell.xib; sourceTree = "<group>"; };
 		BDD31C1B280C443600BF82A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BDD31C1D280C493200BF82A5 /* ApiKeys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
 		BDD31C20280C534200BF82A5 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				BD7053AF2801B668008F5944 /* Main.storyboard */,
+				BDA8D67A28125E60000098D3 /* HeroTableCell.swift */,
+				BDA8D67B28125E60000098D3 /* HeroTableCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA8D67D28125E60000098D3 /* HeroTableCell.xib in Resources */,
 				BD7053B62801B669008F5944 /* LaunchScreen.storyboard in Resources */,
 				BD7053B32801B669008F5944 /* Assets.xcassets in Resources */,
 				BD7053B12801B668008F5944 /* Main.storyboard in Resources */,
@@ -324,6 +331,7 @@
 				BDD31C23280C635900BF82A5 /* NetworkConstants.swift in Sources */,
 				BDD31C1C280C443600BF82A5 /* NetworkManager.swift in Sources */,
 				BD7053AE2801B668008F5944 /* HomveVC.swift in Sources */,
+				BDA8D67C28125E60000098D3 /* HeroTableCell.swift in Sources */,
 				BD7053AA2801B668008F5944 /* AppDelegate.swift in Sources */,
 				BDD31C21280C534200BF82A5 /* URLManager.swift in Sources */,
 				BD7053AC2801B668008F5944 /* SceneDelegate.swift in Sources */,

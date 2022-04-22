@@ -27,7 +27,7 @@ struct Result: Decodable {
     let name : String?
 //    let resultDescription, modified, resourceURI: String?
 //    let urls: [URLElement]
-//    let thumbnail: Thumbnail
+    let thumbnail: Thumbnail
 //    let comics: Comics
 //    let stories: Stories
 //    let events, series: Comics
@@ -63,7 +63,7 @@ struct Stories: Codable {
 struct StoriesItem: Codable {
     let resourceURI, name, type: String
 }
-
+*/
 // MARK: - Thumbnail
 struct Thumbnail: Codable {
     let path, thumbnailExtension: String
@@ -73,7 +73,7 @@ struct Thumbnail: Codable {
         case thumbnailExtension = "extension"
     }
 }
-
+/*
 // MARK: - URLElement
 struct URLElement: Codable {
     let type, url: String
