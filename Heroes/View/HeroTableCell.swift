@@ -18,16 +18,14 @@ class HeroTableCell: UITableViewCell {
     
     func setupCell(name: String, withImage imageUrl: String) {
         self.heroNameLabel.text = name
-        guard let url = URL(string: imageUrl) else {
-            print("Invalid Image Path")
-            return
-        }
-        URLSession.shared.dataTask(with: url, completionHandler: { result,_,_  in
-            let image = UIImage(data: result!)
+        self.heroImage.layer.masksToBounds = true
+        self.heroImage.layer.cornerRadius = 5
+        NetworkManager.shared.fetchImage(from: imageUrl) { image in
             DispatchQueue.main.async {
                 self.heroImage.image = image
             }
-        }).resume()
+        }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

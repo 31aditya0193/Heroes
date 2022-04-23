@@ -51,7 +51,7 @@ extension HomveVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        CGFloat.heroTableRowHeight
     }
 }
 
