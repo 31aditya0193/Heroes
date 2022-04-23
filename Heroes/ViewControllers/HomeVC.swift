@@ -7,16 +7,29 @@
 
 import UIKit
 
-class HomveVC: UIViewController {
+// MARK: Home
+class HomeVC: UIViewController {
     var vm : ResponseModel? = nil
+    let urlManager = URLManager()
     @IBOutlet weak var heroSearchBar: UISearchBar!
     @IBOutlet weak var heroesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let urlManager = URLManager()
-        if let urlString = urlManager.getApiRequest() {
-            NetworkManager.shared.getApiData(urlRequest: urlString, resultType: ResponseModel.self, completionHandler: { result in 
+        setupSearchBar()
+        setupTable()
+    }
+}
+
+// MARK: Search
+extension HomeVC: UISearchBarDelegate {
+    func setupSearchBar() {
+        heroSearchBar.delegate = self
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let urlString = urlManager.getApiRequest(forSearchString: searchText) {
+            NetworkManager.shared.getApiData(urlRequest: urlString, resultType: ResponseModel.self, completionHandler: { result in
                 self.vm = result
                 DispatchQueue.main.async {
                     self.heroesTableView.reloadData()
@@ -25,11 +38,11 @@ class HomveVC: UIViewController {
         } else {
             print("API Request Parsing Failure")
         }
-        setupTable()
     }
 }
 
-extension HomveVC: UITableViewDelegate, UITableViewDataSource {
+// MARK: TableView
+extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func setupTable() {
         self.heroesTableView.delegate = self
         self.heroesTableView.dataSource = self
@@ -42,11 +55,9 @@ extension HomveVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeroCell", for: indexPath) as! HeroTableCell
-        let name = vm?.data.results[indexPath.row].name ?? "Name Not Received"
-        let thumbNail = vm?.data.results[indexPath.row].thumbnail
-        var thumbNailPath = (thumbNail?.path ?? "") + "." + (thumbNail?.thumbnailExtension ?? "")
-        thumbNailPath = thumbNailPath.replacingOccurrences(of: "http", with: "https")
-        cell.setupCell(name: name, withImage: thumbNailPath)
+        if let hero = vm?.data.results[indexPath.row] {
+            cell.setupCell(forHero: hero)
+        }
         return cell
     }
     
@@ -60,7 +71,8 @@ extension HomveVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension HomveVC {
+// MARK: Navigation
+extension HomeVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == .heroDetailSegueIdentifier,
             let destination = segue.destination as? HeroDetailVC,

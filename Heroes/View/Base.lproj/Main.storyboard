@@ -11,12 +11,12 @@
         <!--Heroes-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomveVC" customModule="Heroes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="Heroes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-wA-Wrl">
+                            <searchBar contentMode="redraw" placeholder="Summon Your Hero" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-wA-Wrl">
                                 <rect key="frame" x="0.0" y="140" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -38,16 +38,16 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="KAQ-AS-Hty"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="DfX-uv-FEO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="enH-VD-qJC" secondAttribute="bottom" id="M4c-la-wz5"/>
-                            <constraint firstItem="enH-VD-qJC" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="XNV-Lf-maw"/>
+                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="DfX-uv-FEO"/>
+                            <constraint firstItem="KAQ-AS-Hty" firstAttribute="bottom" secondItem="enH-VD-qJC" secondAttribute="bottom" id="M4c-la-wz5"/>
+                            <constraint firstItem="enH-VD-qJC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="XNV-Lf-maw"/>
                             <constraint firstItem="enH-VD-qJC" firstAttribute="top" secondItem="QfB-wA-Wrl" secondAttribute="bottom" id="do2-7d-3F4"/>
                             <constraint firstItem="enH-VD-qJC" firstAttribute="leading" secondItem="QfB-wA-Wrl" secondAttribute="leading" id="og1-VV-6Xm"/>
-                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qkG-CJ-CP3"/>
-                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uRZ-Le-fRK"/>
+                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="top" secondItem="KAQ-AS-Hty" secondAttribute="top" id="qkG-CJ-CP3"/>
+                            <constraint firstItem="QfB-wA-Wrl" firstAttribute="leading" secondItem="KAQ-AS-Hty" secondAttribute="leading" id="uRZ-Le-fRK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Heroes" id="CDh-X0-Hx4"/>
@@ -78,15 +78,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="MOP-ym-40I"/>
+                        <viewLayoutGuide key="safeArea" id="pbJ-PZ-Y4E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0ZC-Ny-QlW" firstAttribute="leading" secondItem="MOP-ym-40I" secondAttribute="leading" constant="20" id="Isa-76-mUq"/>
+                            <constraint firstItem="0ZC-Ny-QlW" firstAttribute="leading" secondItem="pbJ-PZ-Y4E" secondAttribute="leading" constant="20" id="Isa-76-mUq"/>
                             <constraint firstItem="JHa-ux-RIO" firstAttribute="top" secondItem="hdh-zc-M5E" secondAttribute="top" id="OIt-BT-KbV"/>
                             <constraint firstItem="JHa-ux-RIO" firstAttribute="height" secondItem="hdh-zc-M5E" secondAttribute="height" multiplier="0.6" id="POE-eO-U59"/>
                             <constraint firstItem="JHa-ux-RIO" firstAttribute="width" secondItem="hdh-zc-M5E" secondAttribute="width" id="RIN-5i-cbF"/>
-                            <constraint firstItem="0ZC-Ny-QlW" firstAttribute="trailing" secondItem="MOP-ym-40I" secondAttribute="trailing" constant="-20" id="vRx-aC-m8l"/>
-                            <constraint firstItem="JHa-ux-RIO" firstAttribute="leading" secondItem="MOP-ym-40I" secondAttribute="leading" id="vvl-ew-Ry3"/>
+                            <constraint firstItem="0ZC-Ny-QlW" firstAttribute="trailing" secondItem="pbJ-PZ-Y4E" secondAttribute="trailing" constant="-20" id="vRx-aC-m8l"/>
+                            <constraint firstItem="JHa-ux-RIO" firstAttribute="leading" secondItem="pbJ-PZ-Y4E" secondAttribute="leading" id="vvl-ew-Ry3"/>
                             <constraint firstItem="0ZC-Ny-QlW" firstAttribute="top" secondItem="JHa-ux-RIO" secondAttribute="bottom" constant="40" id="wmc-9e-h3k"/>
                         </constraints>
                     </view>

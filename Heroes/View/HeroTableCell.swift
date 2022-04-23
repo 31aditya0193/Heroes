@@ -8,30 +8,26 @@
 import UIKit
 
 class HeroTableCell: UITableViewCell {
+    var hero : Result!
     @IBOutlet weak var heroImage: UIImageView!
     @IBOutlet weak var heroNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
-    func setupCell(name: String, withImage imageUrl: String) {
-        self.heroNameLabel.text = name
+    func setupCell(forHero hero: Result) {
+        self.heroNameLabel.text = hero.name
         self.heroImage.layer.masksToBounds = true
         self.heroImage.layer.cornerRadius = 5
-        NetworkManager.shared.fetchImage(from: imageUrl) { image in
+        
+        let thumbNail = hero.thumbnail
+        var thumbNailPath = thumbNail.path + "." + thumbNail.thumbnailExtension
+        thumbNailPath = thumbNailPath.replacingOccurrences(of: "http", with: "https")
+        NetworkManager.shared.fetchImage(from: thumbNailPath) { image in
             DispatchQueue.main.async {
                 self.heroImage.image = image
             }
         }
-        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

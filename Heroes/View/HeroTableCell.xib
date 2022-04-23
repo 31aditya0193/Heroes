@@ -23,10 +23,9 @@
                             <constraint firstAttribute="height" constant="70" id="PmW-yD-21q"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4q-cn-Cgg">
-                        <rect key="frame" x="110" y="30" width="41.5" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4q-cn-Cgg">
+                        <rect key="frame" x="110" y="40" width="0.0" height="0.0"/>
+                        <attributedString key="attributedText"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
