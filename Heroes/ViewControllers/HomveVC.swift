@@ -50,8 +50,23 @@ extension HomveVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: .heroDetailSegueIdentifier, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         CGFloat.heroTableRowHeight
     }
 }
 
+extension HomveVC {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  segue.identifier == .heroDetailSegueIdentifier,
+            let destination = segue.destination as? HeroDetailVC,
+            let heroIndex = heroesTableView.indexPathForSelectedRow?.row
+        {
+            destination.hero = vm?.data.results[heroIndex]
+        }
+    }
+}

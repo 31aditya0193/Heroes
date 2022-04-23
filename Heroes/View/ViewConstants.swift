@@ -10,3 +10,7 @@ import UIKit
 extension CGFloat {
     static let heroTableRowHeight: CGFloat = 80
 }
+
+extension String {
+    static let heroDetailSegueIdentifier = "ShowHeroSegue"
+}

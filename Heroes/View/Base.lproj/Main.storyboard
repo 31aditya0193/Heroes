@@ -31,6 +31,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="zuf-Gk-9TB" kind="show" identifier="ShowHeroSegue" id="mhE-P2-gE4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -56,6 +59,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="97.767857142857139"/>
+        </scene>
+        <!--Hero DetailVC-->
+        <scene sceneID="7bt-Wj-dtR">
+            <objects>
+                <viewController id="zuf-Gk-9TB" customClass="HeroDetailVC" customModule="Heroes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hdh-zc-M5E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JHa-ux-RIO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="537.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZC-Ny-QlW">
+                                <rect key="frame" x="20" y="577.5" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MOP-ym-40I"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0ZC-Ny-QlW" firstAttribute="leading" secondItem="MOP-ym-40I" secondAttribute="leading" constant="20" id="Isa-76-mUq"/>
+                            <constraint firstItem="JHa-ux-RIO" firstAttribute="top" secondItem="hdh-zc-M5E" secondAttribute="top" id="OIt-BT-KbV"/>
+                            <constraint firstItem="JHa-ux-RIO" firstAttribute="height" secondItem="hdh-zc-M5E" secondAttribute="height" multiplier="0.6" id="POE-eO-U59"/>
+                            <constraint firstItem="JHa-ux-RIO" firstAttribute="width" secondItem="hdh-zc-M5E" secondAttribute="width" id="RIN-5i-cbF"/>
+                            <constraint firstItem="0ZC-Ny-QlW" firstAttribute="trailing" secondItem="MOP-ym-40I" secondAttribute="trailing" constant="-20" id="vRx-aC-m8l"/>
+                            <constraint firstItem="JHa-ux-RIO" firstAttribute="leading" secondItem="MOP-ym-40I" secondAttribute="leading" id="vvl-ew-Ry3"/>
+                            <constraint firstItem="0ZC-Ny-QlW" firstAttribute="top" secondItem="JHa-ux-RIO" secondAttribute="bottom" constant="40" id="wmc-9e-h3k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="4VB-Dr-CPu"/>
+                    <connections>
+                        <outlet property="heroDetailLabel" destination="0ZC-Ny-QlW" id="hgX-PK-NZR"/>
+                        <outlet property="heroImageView" destination="JHa-ux-RIO" id="jS9-fx-NXT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sSC-i0-28N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BjW-Fq-E1e">
