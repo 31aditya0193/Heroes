@@ -82,10 +82,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             self.searchTask?.cancel()
             let task = DispatchWorkItem { [unowned self] in
                 MvlNetworkManager.shared.getData(with: urlRequest, resultType: MvlResponseModel.self, completionHandler: { result in
-                    print(searchText)
                     self.HomeViewModel = result
-                    DispatchQueue.main.async {
-                        self.heroesTableView.reloadData()
+                    DispatchQueue.main.async { [weak self] in
+                        self?.heroesTableView.reloadData()
                     }
                 })
             }

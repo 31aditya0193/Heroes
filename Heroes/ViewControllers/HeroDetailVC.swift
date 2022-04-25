@@ -14,8 +14,6 @@ class HeroDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,8 +23,8 @@ class HeroDetailVC: UIViewController {
         var thumbNailPath = thumbNail.path + "." + thumbNail.thumbnailExtension
         thumbNailPath = thumbNailPath.replacingOccurrences(of: "http://", with: "https://")
         MvlNetworkManager.shared.fetchImage(from: thumbNailPath) { image in
-            DispatchQueue.main.async {
-                self.heroImageView.image = image
+            DispatchQueue.main.async { [weak self] in
+                self?.heroImageView.image = image
             }
         }
     }
