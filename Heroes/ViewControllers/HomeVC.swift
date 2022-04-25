@@ -11,6 +11,8 @@ import UIKit
 class HomeVC: UIViewController {
     var HomeViewModel : MvlResponseModel? = nil
     let urlManager = MvlURLManager()
+    var searchTask: DispatchWorkItem?
+    
     @IBOutlet weak var heroesTableView: UITableView!
     lazy var heroSearchBar: UISearchController = {
        let searchBar = UISearchController()
@@ -25,7 +27,7 @@ class HomeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        getTableData(query: "")
+        getTableData()
     }
 }
 
@@ -74,14 +76,22 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         CGFloat.heroTableRowHeight
     }
     
-    func getTableData(query searchText: String) {
+    func getTableData(query searchText: String = "") {
         if let urlRequest = urlManager.prepareUrlRequest(toSearch: searchText) {
-            MvlNetworkManager.shared.getData(with: urlRequest, resultType: MvlResponseModel.self, completionHandler: { result in
-                self.HomeViewModel = result
-                DispatchQueue.main.async {
-                    self.heroesTableView.reloadData()
-                }
-            })
+            
+            self.searchTask?.cancel()
+            let task = DispatchWorkItem { [unowned self] in
+                MvlNetworkManager.shared.getData(with: urlRequest, resultType: MvlResponseModel.self, completionHandler: { result in
+                    print(searchText)
+                    self.HomeViewModel = result
+                    DispatchQueue.main.async {
+                        self.heroesTableView.reloadData()
+                    }
+                })
+            }
+            self.searchTask = task
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: task)
         } else {
             print("API Request Parsing Failure")
         }
