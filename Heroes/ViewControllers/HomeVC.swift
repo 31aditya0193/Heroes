@@ -80,7 +80,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         if let urlRequest = urlManager.prepareUrlRequest(toSearch: searchText) {
             
             self.searchTask?.cancel()
-            let task = DispatchWorkItem { [unowned self] in
+            let task = DispatchWorkItem {
                 MvlNetworkManager.shared.getData(with: urlRequest, resultType: MvlResponseModel.self, completionHandler: { result in
                     self.HomeViewModel = result
                     DispatchQueue.main.async { [weak self] in
@@ -89,8 +89,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
                 })
             }
             self.searchTask = task
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: task)
+            let queue = DispatchQueue.global(qos: .userInitiated)
+            queue.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: task)
         } else {
             print("API Request Parsing Failure")
         }
