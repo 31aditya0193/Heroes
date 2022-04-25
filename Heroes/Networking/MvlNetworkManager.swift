@@ -7,11 +7,11 @@
 
 import UIKit
 
-class NetworkManager {
-    static let shared : NetworkManager = NetworkManager()
+class MvlNetworkManager {
+    static let shared : MvlNetworkManager = MvlNetworkManager()
     private init() {}
     
-    func getApiData<T: Decodable>(urlRequest: URLRequest, resultType: T.Type, completionHandler: @escaping(_ result: T) -> Void) {
+    func getData<T: Decodable>(with urlRequest: URLRequest, resultType: T.Type, completionHandler: @escaping(_ result: T) -> Void) {
         URLSession.shared.dataTask(with: urlRequest) { responseData, httpUrlResponse, error in
             if (error == nil && responseData != nil && responseData?.count != 0) {
                 let decoder = JSONDecoder()

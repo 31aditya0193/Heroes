@@ -8,30 +8,32 @@
 import Foundation
 import CryptoKit
 
-struct URLManager {
+struct MvlURLManager {
     var path : String = ""
     let privateKey = Bundle.main.object(forInfoDictionaryKey: "PRIVATE_KEY") as? String
     let publicKey = Bundle.main.object(forInfoDictionaryKey: "PUBLIC_KEY") as? String
     
-    func getApiRequest(forSearchString nameSubString: String = "") -> URLRequest? {
+    func prepareUrlRequest(toSearch searchString: String = "") -> URLRequest? {
         guard let privateKey = privateKey, !privateKey.isEmpty, let publicKey = publicKey, !publicKey.isEmpty else {
             print("Keys not found")
             return nil
         }
 
-        var components = URLComponents(string: String.baseEndPoint + ContentType.characters.rawValue)!
         let ts = getEpochTime()
+        
+        var components = URLComponents(string: String.baseEndPoint + ContentType.characters.rawValue)!
         components.queryItems = [
-            URLQueryItem(name: "apikey", value: publicKey),
-            URLQueryItem(name: "ts", value: ts),
-            URLQueryItem(name: "hash", value: getMd5(of: ts + privateKey + publicKey))
+            URLQueryItem(name: String.apiKeyStr, value: publicKey),
+            URLQueryItem(name: String.timeStampStr, value: ts),
+            URLQueryItem(name: String.hashStr, value: getMd5(of: ts + privateKey + publicKey))
         ]
-        if !nameSubString.isEmpty {
-            components.queryItems?.append(URLQueryItem(name: "nameStartsWith", value: nameSubString))
+        if !searchString.isEmpty {
+            components.queryItems?.append(URLQueryItem(name: String.nameQueryStr, value: searchString))
         }
         components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+        
         var request = URLRequest(url: components.url!)
-        request.httpMethod = "GET"
+        request.httpMethod = HttpMethod.get.rawValue
         return request
     }
     

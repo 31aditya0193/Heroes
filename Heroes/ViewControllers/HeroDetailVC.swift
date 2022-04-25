@@ -23,8 +23,8 @@ class HeroDetailVC: UIViewController {
         heroDetailLabel.text = hero.name
         let thumbNail = hero.thumbnail
         var thumbNailPath = thumbNail.path + "." + thumbNail.thumbnailExtension
-        thumbNailPath = thumbNailPath.replacingOccurrences(of: "http", with: "https")
-        NetworkManager.shared.fetchImage(from: thumbNailPath) { image in
+        thumbNailPath = thumbNailPath.replacingOccurrences(of: "http://", with: "https://")
+        MvlNetworkManager.shared.fetchImage(from: thumbNailPath) { image in
             DispatchQueue.main.async {
                 self.heroImageView.image = image
             }

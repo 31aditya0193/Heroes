@@ -7,8 +7,12 @@
 
 import Foundation
 
+// MARK: - READ ME
+// Some Keys in this Model are commented out because they're not needed right away, but commented
+// code is there to understand the structure of the response.
+// Uncomment whichever key is needed.
 
-struct ResponseModel: Decodable {
+struct MvlResponseModel: Decodable {
 //    let code: Int
 //    let status, copyright, attributionText, attributionHTML: String
     let data: DataClass
@@ -38,8 +42,18 @@ struct Result: Decodable {
 //        case modified, resourceURI, urls, thumbnail, comics, stories, events, series
 //    }
 }
-/*
- UnComment when needed
+
+// MARK: - Thumbnail
+struct Thumbnail: Codable {
+    let path, thumbnailExtension: String
+
+    enum CodingKeys: String, CodingKey {
+        case path
+        case thumbnailExtension = "extension"
+    }
+}
+
+ /*
 // MARK: - Comics
 struct Comics: Codable {
     let available, returned: Int
@@ -63,17 +77,7 @@ struct Stories: Codable {
 struct StoriesItem: Codable {
     let resourceURI, name, type: String
 }
-*/
-// MARK: - Thumbnail
-struct Thumbnail: Codable {
-    let path, thumbnailExtension: String
 
-    enum CodingKeys: String, CodingKey {
-        case path
-        case thumbnailExtension = "extension"
-    }
-}
-/*
 // MARK: - URLElement
 struct URLElement: Codable {
     let type, url: String

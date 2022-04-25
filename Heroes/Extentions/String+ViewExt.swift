@@ -8,9 +8,12 @@
 import UIKit
 
 extension CGFloat {
-    static let heroTableRowHeight: CGFloat = 80
+    static let heroTableRowHeight = 80.0
 }
 
 extension String {
+    // MARK: View Strings
     static let heroDetailSegueIdentifier = "ShowHeroSegue"
+    static let heroTableCellNibName = "HeroTableCell"
+    static let heroTableCellID = "HeroCell"
 }

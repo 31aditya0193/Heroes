@@ -9,34 +9,38 @@ import UIKit
 
 // MARK: Home
 class HomeVC: UIViewController {
-    var vm : ResponseModel? = nil
-    let urlManager = URLManager()
-    @IBOutlet weak var heroSearchBar: UISearchBar!
+    var HomeViewModel : MvlResponseModel? = nil
+    let urlManager = MvlURLManager()
     @IBOutlet weak var heroesTableView: UITableView!
+    lazy var heroSearchBar: UISearchController = {
+       let searchBar = UISearchController()
+        return searchBar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
         setupTable()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getTableData(query: "")
+    }
 }
 
 // MARK: Search
-extension HomeVC: UISearchBarDelegate {
+extension HomeVC: UISearchBarDelegate, UISearchResultsUpdating {
     func setupSearchBar() {
-        heroSearchBar.delegate = self
+        navigationItem.searchController = heroSearchBar
+        heroSearchBar.searchResultsUpdater = self
+        heroSearchBar.searchBar.delegate = self
+        heroSearchBar.searchBar.placeholder = "Summon Your Hero"
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let urlString = urlManager.getApiRequest(forSearchString: searchText) {
-            NetworkManager.shared.getApiData(urlRequest: urlString, resultType: ResponseModel.self, completionHandler: { result in
-                self.vm = result
-                DispatchQueue.main.async {
-                    self.heroesTableView.reloadData()
-                }
-            })
-        } else {
-            print("API Request Parsing Failure")
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            getTableData(query: searchText)
         }
     }
 }
@@ -46,16 +50,16 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func setupTable() {
         self.heroesTableView.delegate = self
         self.heroesTableView.dataSource = self
-        self.heroesTableView.register(UINib(nibName: "HeroTableCell", bundle: nil), forCellReuseIdentifier: "HeroCell")
+        self.heroesTableView.register(UINib(nibName: String.heroTableCellNibName, bundle: nil), forCellReuseIdentifier: String.heroTableCellID)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        vm?.data.results.count ?? 0
+        HomeViewModel?.data.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HeroCell", for: indexPath) as! HeroTableCell
-        if let hero = vm?.data.results[indexPath.row] {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String.heroTableCellID, for: indexPath) as! HeroTableCell
+        if let hero = HomeViewModel?.data.results[indexPath.row] {
             cell.setupCell(forHero: hero)
         }
         return cell
@@ -69,6 +73,19 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         CGFloat.heroTableRowHeight
     }
+    
+    func getTableData(query searchText: String) {
+        if let urlRequest = urlManager.prepareUrlRequest(toSearch: searchText) {
+            MvlNetworkManager.shared.getData(with: urlRequest, resultType: MvlResponseModel.self, completionHandler: { result in
+                self.HomeViewModel = result
+                DispatchQueue.main.async {
+                    self.heroesTableView.reloadData()
+                }
+            })
+        } else {
+            print("API Request Parsing Failure")
+        }
+    }
 }
 
 // MARK: Navigation
@@ -78,7 +95,7 @@ extension HomeVC {
             let destination = segue.destination as? HeroDetailVC,
             let heroIndex = heroesTableView.indexPathForSelectedRow?.row
         {
-            destination.hero = vm?.data.results[heroIndex]
+            destination.hero = HomeViewModel?.data.results[heroIndex]
         }
     }
 }
