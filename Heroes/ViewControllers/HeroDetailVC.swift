@@ -18,6 +18,10 @@ class HeroDetailVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setupView()
+    }
+    
+    func setupView() {
         heroDetailLabel.text = hero.name
         let thumbNail = hero.thumbnail
         var thumbNailPath = thumbNail.path + "." + thumbNail.thumbnailExtension
